@@ -6,18 +6,25 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class Client {
-
+        static UImain chatbox = new UImain();
 	private String host;
 	private int port;
 	private String nickname;
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
+                //chatbox.setFocusable(true);
+                //chatbox.setVisible(true);
 		new Client("127.0.0.1", 12345).run();
+                
+               
 	}
 
 	public Client(String host, int port) {
+          
 		this.host = host;
 		this.port = port;
 	}
@@ -33,6 +40,7 @@ public class Client {
 		// ask for a nickname
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter a nickname: ");
+                
 		nickname = sc.nextLine();
 
 		// read messages from keyboard and send to server
